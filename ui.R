@@ -17,6 +17,7 @@ shinyUI(
             mainPanel(
                 tabsetPanel(
                     tabPanel("Intro",
+                             em("Please wait for the first plot to show up while the app loads to before changing the Year and Muni selectors."),
                              div(h3("How Warm Was 2014?"), style = "text-align:center;"),
                              p("Please wait for the first plot to show up while the app loads to before changing the Year and Muni selectors."),
                              p("Weather data extends back to 1995 and only for Anchorage, Fairbanks, and Juneau"),
@@ -25,15 +26,21 @@ shinyUI(
                              ),
                                             
                     tabPanel("About",
+                             h3("References"),
                              p("The data for this app came from the", tags$a(href="http://academic.udayton.edu/kissock/http/Weather/citylistUS.htm", "Dayton Average Daily Temperature Archive"), "."),
                              p("The idea to create this weather app was adapted from a", tags$a(href="http://blog.revolutionanalytics.com/2015/01/a-beautiful-story-about-nyc-weather.html", "Revolutions Analytics blog post"), "."),
-                             p("The original code was adapted from is from", 
+                             p("The original code was adapted from", 
                                tags$a(href="http://rpubs.com/bradleyboehmke/weather_graphic", "Bradley Boehmke"), 
                                "and",
                                tags$a(href="https://gist.github.com/abresler/46c36c1a88c849b94b07", "Alex Bresler"),"."),
                              p("The code to recreate this app is at the",
                                tags$a(href="https://github.com/hansthompson/AK-Tufte-plot-shiny-app", "Code for Anchorage"), 
-                               "github."))
+                               "github."),
+                             h3("Personal"),
+                             p("Developed By: Charles Hans Thompson"),
+                             p(tags$a(href = "hans.thompson1@gmail.com","hans.thompson1@gmail.com")),
+                             p(tags$a(href = "https://github.com/hansthompson", "Github Profile")),
+                             p(tags$a(href = "https://www.linkedin.com/pub/charles-hans-thompson/6/b3/300", "LinkedIn Profile")))
                     
                     
                 )))))
