@@ -75,12 +75,14 @@ p <- reactive({
               panel.background = element_blank(),
               axis.ticks = element_blank(),
               axis.title = element_blank()) +
-        geom_linerange(past, mapping=aes(x=newday, ymin=lower, ymax=upper), colour = "wheat2", alpha=.1)
+        geom_linerange(past, 
+                       mapping=aes(x=newday, ymin=lower, ymax=upper), colour = "wheat2", alpha=.1)
     
     #p
     #Next, we can add the data that represents the 95% confidence interval around the daily mean temperatures for 1975-2013.
     p <- p +
-        geom_linerange(past, mapping=aes(x=newday, ymin=avg_lower, ymax=avg_upper), colour = "wheat4")
+        geom_linerange(past,
+                       mapping=aes(x=newday, ymin=avg_lower, ymax=avg_upper), colour = "wheat4")
     
     p <- p +
         geom_line(present, mapping=aes(x=newday, y=temp, group=1)) +
@@ -124,7 +126,7 @@ p <- reactive({
         geom_point(data=presenthighs, aes(x=newday, y=temp), colour="firebrick3")
     
     p <- p +
-        ggtitle(paste("Anchorage's Weather in", input$year)) +
+        ggtitle(paste(paste0(input$city, "'s Weather in ", input$year))) +
         theme(plot.title=element_text(face="bold",hjust=.012,vjust=.8,colour="#3C3C3C",size=20)) +
         annotate("text", x = 35, y = 98, label = "temperature in Fahrenheit", size=4, fontface="bold")
     
