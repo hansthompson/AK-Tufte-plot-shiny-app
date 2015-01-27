@@ -41,7 +41,7 @@ p <- reactive({
     # create dataframe that represents the lowest temp for each day for the historical data
     pastlows <- past %>%
         group_by(newday) %>%
-        summarise(Pastlow = min(temp)) # identify lowest temp for each day from 1975-2013
+        summarise(Pastlow = min(temp)) # identify lowest temp for each day from 1995-2914
     
     # create dataframe that identifies the days in 2014 in which the temps were lower than all previous 19 years
     presentlows <- present %>%
@@ -52,7 +52,7 @@ p <- reactive({
     # create dataframe that represents the highest temp for each day for the historical data
     pasthighs <- past %>%
         group_by(newday) %>%
-        summarise(Pasthigh = max(temp))  # identify highest temp for each day from 1975-2013
+        summarise(Pasthigh = max(temp))  # identify highest temp for each day from 1995-2014
     
     # create dataframe that identifies the days in 2014 in which the temps were higher than all previous 19 years
     presenthighs <- present %>%

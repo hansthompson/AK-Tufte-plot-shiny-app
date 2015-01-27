@@ -17,12 +17,11 @@ shinyUI(
             mainPanel(
                 tabsetPanel(
                     tabPanel("Intro",
-                             em("Please wait for the first plot to show up while the app loads to before changing the Year and Muni selectors."),
+                             div(em("Please wait for the first plot to show up while the app loads before changing the Year and Muni selectors."), style = "text-align:center;"),
                              div(h3("How Warm Was 2014?"), style = "text-align:center;"),
-                             p("Please wait for the first plot to show up while the app loads to before changing the Year and Muni selectors."),
                              p("Weather data extends back to 1995 and only for Anchorage, Fairbanks, and Juneau"),
-                             p("2014 currently is only recorded to Dec. 16th."),
-                             p("The large dark bar at the right side of the chart representing the normal range is an artifact from low sample size from leap years.")
+                             p("2014 currently is only recorded up to Dec. 16th."),
+                             p("The large dark bar at the right side of the chart representing the normal range is an artifact from low sample size of leap years.")
                              ),
                                             
                     tabPanel("About",
@@ -34,13 +33,11 @@ shinyUI(
                                "and",
                                tags$a(href="https://gist.github.com/abresler/46c36c1a88c849b94b07", "Alex Bresler"),"."),
                              p("The code to recreate this app is at the",
-                               tags$a(href="https://github.com/hansthompson/AK-Tufte-plot-shiny-app", "Code for Anchorage"), 
+                               tags$a(href="https://github.com/codeforanchorage/AK-Tufte-plot-shiny-app", "Code for Anchorage"), 
                                "github."),
-                             h3("Personal"),
+                             h3("Me"),
                              p("Developed By: Charles Hans Thompson"),
-                             p(tags$a(href = "hans.thompson1@gmail.com","hans.thompson1@gmail.com")),
+                             p("hans.thompson1@gmail.com"),
                              p(tags$a(href = "https://github.com/hansthompson", "Github Profile")),
                              p(tags$a(href = "https://www.linkedin.com/pub/charles-hans-thompson/6/b3/300", "LinkedIn Profile")))
-                    
-                    
                 )))))
