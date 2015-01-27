@@ -59,6 +59,8 @@ p <- reactive({
         left_join(pasthighs) %>%  # merge historical highs to current year low data
         mutate(record = ifelse(temp>Pasthigh, "Y", "N")) %>% # identifies if current year was record high
         filter(record == "Y")  # filter for days that represent current year record highs
+
+    
     
     dgr_fmt <- function(x, ...) {
         parse(text = paste(x, "*degree", sep = ""))
@@ -130,11 +132,14 @@ p <- reactive({
         theme(plot.title=element_text(face="bold",hjust=.012,vjust=.8,colour="#3C3C3C",size=20)) +
         annotate("text", x = 35, y = 98, label = "temperature in Fahrenheit", size=4, fontface="bold")
     
-    #p +
-    #    annotate("text", x = 63, y = 93,
-    #             label = "Data represents average daily temperatures. Accessible data dates back to 1995", size=3, colour="gray30") +
-    #    annotate("text", x = 59.5, y = 90,
-    #             label = "January 1, 1975. Data for 2014 is only available through December 16.", size=3, colour="gray30") +
+    
+    dim(presenthighs)[1] 
+    dim(presentlows)[1]
+    p <- p +
+        annotate("text", x = 63, y = 80,
+                 label = paste("Record Highs Since 1995:", dim(presenthighs)[1], "Days"), size=4, colour="gray30") +
+        annotate("text", x = 63, y = 75,
+                 label = paste("Record Lows Since 1995:", dim(presentlows)[1], "Days"), size=4, colour="gray30") 
     #    annotate("text", x = 61, y = 87,
     #             label = "Average temperature for the year was 54.8Â° making 2014 the 6th coldest", size=3, colour="gray30") +
     #    annotate("text", x = 61, y = 84, label = "year since 1995", size=3, colour="gray30") -> p
