@@ -3,14 +3,16 @@ library(tidyr)
 library(magrittr)
 library(ggplot2)
 load("AKweather.rda")
-#input <- list(city = "Anchorage", year = 2014)
+#input <- list(city = "Anchorage", year = 2014, month = 1)
 
 shinyServer(function(input, output) {
 
 p <- reactive({
   
+    
+    
     AKweather %>%
-        filter(city == input$city) %>%
+        filter(city == input$city) %>%#, month == input$month) %>%
         group_by(year, month) %>%
         arrange(day) %>%
         ungroup() %>%
