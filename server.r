@@ -8,11 +8,9 @@ load("AKweather.rda")
 shinyServer(function(input, output) {
 
 p <- reactive({
-  
-    
     
     AKweather %>%
-        filter(city == input$city) %>%#, month == input$month) %>%
+        filter(city == input$city) %>%
         group_by(year, month) %>%
         arrange(day) %>%
         ungroup() %>%
@@ -82,7 +80,6 @@ p <- reactive({
         geom_linerange(past, 
                        mapping=aes(x=newday, ymin=lower, ymax=upper), colour = "wheat2", alpha=.1)
     
-    #p
     #Next, we can add the data that represents the 95% confidence interval around the daily mean temperatures for 1975-2013.
     p <- p +
         geom_linerange(past,
@@ -124,7 +121,6 @@ p <- reactive({
                                       "October", "November", "December"))
     
     #Step 7
-    
     p <- p +
         geom_point(data=presentlows, aes(x=newday, y=temp), colour="blue3") +
         geom_point(data=presenthighs, aes(x=newday, y=temp), colour="firebrick3")
@@ -135,24 +131,11 @@ p <- reactive({
         annotate("text", x = 35, y = 98, label = "temperature in Fahrenheit", size=4, fontface="bold")
     
     
-    dim(presenthighs)[1] 
-    dim(presentlows)[1]
     p <- p +
         annotate("text", x = 63, y = 80,
                  label = paste("Record Highs Since 1995:", dim(presenthighs)[1], "Days"), size=4, colour="gray30") +
         annotate("text", x = 63, y = 75,
                  label = paste("Record Lows Since 1995:", dim(presentlows)[1], "Days"), size=4, colour="gray30") 
-    #    annotate("text", x = 61, y = 87,
-    #             label = "Average temperature for the year was 54.8Â° making 2014 the 6th coldest", size=3, colour="gray30") +
-    #    annotate("text", x = 61, y = 84, label = "year since 1995", size=3, colour="gray30") -> p
-    
-    #p +
-    #    annotate("segment", x = 22, xend = 32, y = 12, yend = 3, colour = "blue3") +
-    #    annotate("text", x = 50, y = 2, label = "We had 4 days that were the", size=3, colour="blue3") +
-    #    annotate("text", x = 50, y = 0, label = "coldest since 1995", size=3, colour="blue3") +
-    #    annotate("segment", x = 169, xend = 169, y = 83, yend = 92, colour = "firebrick3") +
-    #    annotate("text", x = 169, y = 95, label = "We had 30 days that were the", size=3, colour="firebrick3") +
-    #    annotate("text", x = 169, y = 93, label = "hottest since 1995", size=3, colour="firebrick3")# -> p
     
     present %>% filter(newday %in% c(180:185)) %>% select(x = newday, y =  temp) %>% data.frame -> legend_data
     legend_data$y - 65 -> legend_data$y
